@@ -8,6 +8,9 @@ variables:
   BUILD_TASKS: 4
   BUILD_CPU_MULTIPLIER: 1
 
+  # mesa-git-extension is only available through Flathub beta
+  RELEASE_CHANNEL: beta
+
 default:
   image: "${DOCKER_REGISTRY}/bst2:${IMAGE_ID}"
   interruptible: true
