@@ -2,11 +2,7 @@ sources:
 - kind: git_repo
   url: freedesktop:mesa/mesa.git
   track: main
-  ref: 24.2-branchpoint-342-ga211a51a4addc7a2e686b1e4dc548f4deca49c12
-- kind: patch
-  path: patches/mesa/clang_res_path.patch
-- kind: local
-  path: files/mesa/appdata.template
+  ref: 24.2-branchpoint-2022-gb78a3d4de90627c7a522d35b1a6341efc0af8ffd
 # Rust dependencies:
 - kind: tar
   directory: subprojects/packagecache/syn-2.0.68
@@ -28,3 +24,46 @@ sources:
   directory: subprojects/packagecache/paste-1.0.14
   url: tar_https:crates.io/api/v1/crates/paste/1.0.14/download
   ref: de3145af08024dea9fa9914f381a17b8fc6034dfb00f3a84013f7ff43f29ed4c
+- kind: tar
+  directory: subprojects/packagecache/roxmltree-0.20.0
+  url: tar_https:crates.io/api/v1/crates/roxmltree/0.20.0/download
+  ref: 6c20b6793b5c2fa6553b250154b78d6d0db37e72700ae35fad9387a46f487c97
+- kind: tar
+  directory: subprojects/packagecache/equivalent-1.0.1
+  url: tar_https:crates.io/api/v1/crates/equivalent/1.0.1/download
+  ref: 5443807d6dff69373d433ab9ef5378ad8df50ca6298caf15de6e52e24aaf54d5
+- kind: tar
+  directory: subprojects/packagecache/hashbrown-0.14.1
+  url: tar_https:crates.io/api/v1/crates/hashbrown/0.14.1/download
+  ref: 7dfda62a12f55daeae5015f81b0baea145391cb4520f86c248fc615d72640d12
+- kind: tar
+  directory: subprojects/packagecache/indexmap-2.2.6
+  url: tar_https:crates.io/api/v1/crates/indexmap/2.2.6/download
+  ref: 168fb715dda47215e360912c096649d23d58bf392ac62f73919e831745e40f26
+- kind: tar
+  directory: subprojects/packagecache/once_cell-1.8.0
+  url: tar_https:crates.io/api/v1/crates/once_cell/1.8.0/download
+  ref: 692fcb63b64b1758029e0a96ee63e049ce8c5948587f2f7208df04625e5f6b56
+- kind: tar
+  directory: subprojects/packagecache/pest-2.7.11
+  url: tar_https:crates.io/api/v1/crates/pest/2.7.11/download
+  ref: cd53dff83f26735fdc1ca837098ccf133605d794cdae66acfc2bfac3ec809d95
+- kind: tar
+  directory: subprojects/packagecache/pest_derive-2.7.11
+  url: tar_https:crates.io/api/v1/crates/pest_derive/2.7.11/download
+  ref: 2a548d2beca6773b1c244554d36fcf8548a8a58e74156968211567250e48e49a
+- kind: tar
+  directory: subprojects/packagecache/pest_generator-2.7.11
+  url: tar_https:crates.io/api/v1/crates/pest_generator/2.7.11/download
+  ref: 3c93a82e8d145725dcbaf44e5ea887c8a869efdcc28706df2d08c69e17077183
+- kind: tar
+  directory: subprojects/packagecache/pest_meta-2.7.11
+  url: tar_https:crates.io/api/v1/crates/pest_meta/2.7.11/download
+  ref: a941429fea7e08bedec25e4f6785b6ffaacc6b755da98df5ef3e7dcf4a124c4f
+- kind: tar
+  directory: subprojects/packagecache/ucd-trie-0.1.6
+  url: tar_https:crates.io/api/v1/crates/ucd-trie/0.1.6/download
+  ref: ed646292ffc8188ef8ea4d1e0e0150fb15a5c2e12ad9b8fc191ae7a8a7f3c4b9
+  # Patches need to be last so non-applying patches won't block updates
+- kind: patch
+  path: patches/mesa/clang_res_path.patch
