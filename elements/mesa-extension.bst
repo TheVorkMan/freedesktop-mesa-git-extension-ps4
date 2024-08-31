@@ -18,4 +18,4 @@ config:
     Runtime:
       name: org.freedesktop.Platform.GL.mesa-git
       runtime: org.freedesktop.Platform/%{flatpak_arch}/%{branch}
-      sdk: org.freedesktop.Sdk/%{arch}/%{branch}
+      sdk: org.freedesktop.Sdk/%{flatpak_arch}/%{branch}
