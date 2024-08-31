@@ -13,7 +13,7 @@ build: elements
 clean-repo:
 	rm -rf $(REPO)
 
-export-repo: clean-repo build
+export-repo: build
 	mkdir -p $(CHECKOUT_ROOT)
 	$(BST) artifact checkout flatpak-repo.bst --directory $(CHECKOUT_ROOT)/flatpak-repo.bst
 	test -e $(REPO) || ostree init --repo=$(REPO) --mode=archive
