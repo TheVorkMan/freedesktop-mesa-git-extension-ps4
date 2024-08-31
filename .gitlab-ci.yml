@@ -128,6 +128,7 @@ publish_flatpak:
   after_script:
   - |
     export REPO_TOKEN="${FLATHUB_REPO_TOKEN_BETA}"
+    test -r publish_build.txt
     flat-manager-client purge "$(cat publish_build.txt)"
   only:
   - master@freedesktop-sdk/mesa-git-extension
