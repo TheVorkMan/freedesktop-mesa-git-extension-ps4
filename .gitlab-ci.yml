@@ -127,6 +127,7 @@ publish_flatpak:
     - ${CI_PROJECT_DIR}/cache/buildstream/logs
   after_script:
   - |
+    export REPO_TOKEN="${FLATHUB_REPO_TOKEN_BETA}"
     flat-manager-client purge "$(cat publish_build.txt)"
   only:
   - master@freedesktop-sdk/mesa-git-extension
