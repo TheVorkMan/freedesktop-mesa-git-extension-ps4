@@ -11,7 +11,7 @@ sources:
 config:
   options:
     bootstrap_build_arch: "%{bootstrap_arch}"
-    target_arch: "%{arch}"
+    target_arch: "%{target_arch}"
 
   overrides:
     extensions/mesa/libdrm.bst: libdrm.bst
