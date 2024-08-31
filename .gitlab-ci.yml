@@ -4,8 +4,6 @@ variables:
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
 
   XDG_CACHE_HOME: "${CI_PROJECT_DIR}/cache"
-  # mesa-git-extension is only available through Flathub beta
-  RELEASE_CHANNEL: beta
 
   BUILD_TASKS: 4
   BUILD_CPU_MULTIPLIER: 1
@@ -109,80 +107,32 @@ build_ppc64le:
   - .merge_request_build
   - .builder-ppc64le
 
-.protected_build:
-  only:
-  - master@freedesktop-sdk/mesa-git-extension
-  - /release\/.*/@freedesktop-sdk/mesa-git-extension
-
-prepare_publish:
-  extends:
-  - .protected_build
-  stage: publish
-  script:
-  - flat-manager-client create https://hub.flathub.org/ "${RELEASE_CHANNEL}" --build-log-url ${CI_PIPELINE_URL} > publish_build.txt
-  except:
-  - schedules
-  artifacts:
-    paths:
-    - publish_build.txt
-
-.publish_template:
+publish_flatpak:
   stage: publish
   interruptible: false
   variables:
     DISABLE_CACHE_PUSH: 1
   script:
-  - make export-repo RELEASE_KIND=${RELEASE_CHANNEL} REPO=repo
+  - make export-repo ARCH=x86_64 BOOTSTRAP_ARCH=x86_64 REPO=repo
+  - make export-repo ARCH=i686 BOOTSTRAP_ARCH=x86_64 REPO=repo
+  - make export-repo ARCH=aarch64 BOOTSTRAP_ARCH=aarch64 REPO=repo
   - flatpak build-update-repo --generate-static-deltas repo
+  - flat-manager-client create https://hub.flathub.org/ "${RELEASE_CHANNEL}" --build-log-url ${CI_PIPELINE_URL} > publish_build.txt
   - flat-manager-client push $(cat publish_build.txt) repo --build-log-url ${CI_PIPELINE_URL}
-  needs:
-  - prepare_publish
+  - flat-manager-client commit --wait $(cat publish_build.txt)
+  - flat-manager-client publish --wait $(cat publish_build.txt)
   artifacts:
     when: always
     paths:
     - ${CI_PROJECT_DIR}/cache/buildstream/logs
+  after_script:
+  - |
+    flat-manager-client purge "$(cat publish_build.txt)"
+  only:
+  - master@freedesktop-sdk/mesa-git-extension
+  - /release\/.*/@freedesktop-sdk/mesa-git-extension
   except:
   - schedules
-
-publish_x86_64:
-  extends:
-  - .protected_build
-  - .publish_template
-  - .builder-x86_64
-
-publish_i686:
-  extends:
-  - .protected_build
-  - .publish_template
-  - .builder-i686
-
-.finish_publish_base:
-  extends:
-  - .protected_build
-  stage: publish
-  needs:
-  - prepare_publish
-  - job: publish_x86_64
-    artifacts: false
-  - job: publish_i686
-    artifacts: false
-  except:
-  - schedules
-
-finish_publish:
-  extends:
-  - .finish_publish_base
-  script:
-  - flat-manager-client commit --wait $(cat publish_build.txt)
-  - flat-manager-client publish --wait $(cat publish_build.txt)
-  - flat-manager-client purge $(cat publish_build.txt)
-
-finish_publish_failed:
-  extends:
-  - .finish_publish_base
-  script:
-  - flat-manager-client purge $(cat publish_build.txt)
-  when: on_failure
 
 track_updates:
   stage: update
