@@ -127,6 +127,7 @@ publish_flatpak:
           echo "Keeping ${ref}"
           ;;
       esac
+    done
 
   - flatpak build-update-repo --generate-static-deltas repo
   - flat-manager-client create https://hub.flathub.org/ "${RELEASE_CHANNEL}" --build-log-url ${CI_PIPELINE_URL} > publish_build.txt
