@@ -11,6 +11,8 @@ variables:
   # mesa-git-extension is only available through Flathub beta
   RELEASE_CHANNEL: beta
 
+  TRACK_ELEMENTS: track-elements.bst
+
 default:
   image: "${DOCKER_REGISTRY}/bst2:${IMAGE_ID}"
   interruptible: true
@@ -179,6 +181,4 @@ track_updates:
     --create_mr
     --gitlab_project="freedesktop-sdk/mesa-git-extension"
     --max_merge_requests=4
-    track-elements.bst
-    freedesktop-sdk.bst
-
+    $TRACK_ELEMENTS
