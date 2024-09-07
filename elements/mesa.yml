@@ -68,7 +68,6 @@ variables:
   meson-lto-flags: ''
   meson-local: >-
     -Db_ndebug=true
-    -Ddri3=enabled
     -Degl=enabled
     -Dgallium-drivers=%{gallium_drivers}
     -Dgallium-nine=true
