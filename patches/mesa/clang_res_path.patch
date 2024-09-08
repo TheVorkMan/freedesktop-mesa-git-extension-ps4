@@ -1,6 +1,6 @@
-From a0bdc4e60f8a5e888422479d34006dce849f8144 Mon Sep 17 00:00:00 2001
+From 2a11bdfc5a19bea67f4b382ac22d7af17f9b69c5 Mon Sep 17 00:00:00 2001
 From: bbhtt <bbhtt.zn0i8@slmail.me>
-Date: Mon, 25 Mar 2024 09:20:30 +0530
+Date: Sun, 8 Sep 2024 08:11:57 +0530
 Subject: [PATCH] clc: Use clang binary path to find clc_res_path
 
 LLVM can't handle multi arch libdirs like `/usr/lib/$arch-triplet` and
@@ -12,11 +12,11 @@ So temporarily patch clang_res_path and pass the clang binary path to it
 instead of libclang path, so that clang_res_path points to the correct
 include directory: `/usr/lib/$arch-triplet/clang/17/include`
 ---
- src/compiler/clc/clc_helpers.cpp | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+ src/compiler/clc/clc_helpers.cpp | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/src/compiler/clc/clc_helpers.cpp b/src/compiler/clc/clc_helpers.cpp
-index 530196b8328..0befa415be9 100644
+index 346a811386d..0fe8a2388aa 100644
 --- a/src/compiler/clc/clc_helpers.cpp
 +++ b/src/compiler/clc/clc_helpers.cpp
 @@ -37,6 +37,7 @@
@@ -27,23 +27,27 @@ index 530196b8328..0befa415be9 100644
  #include <llvm/Bitcode/BitcodeWriter.h>
  #include <llvm/Bitcode/BitcodeReader.h>
  #include <llvm-c/Core.h>
-@@ -876,10 +877,15 @@ clc_compile_to_llvm_module(LLVMContext &llvm_ctx,
+@@ -886,13 +887,18 @@ clc_compile_to_llvm_module(LLVMContext &llvm_ctx,
        return {};
     }
  
-+    const auto clang_bin_path = (::llvm::sys::findProgramByName("clang").get());
-+    if (clang_bin_path.empty()) {
-+        clc_error(logger, "Couldn't find clang binary path.\n");
-+    }
++   const auto clang_bin_path = (::llvm::sys::findProgramByName("clang").get());
++   if (clang_bin_path.empty()) {
++      clc_error(logger, "Couldn't find clang binary path.\n");
++   }
 +
-    // GetResourcePath is a way to retrive the actual libclang resource dir based on a given binary
+    // GetResourcePath is a way to retrieve the actual libclang resource dir based on a given binary
     // or library.
-    auto clang_res_path =
--      fs::path(Driver::GetResourcesPath(std::string(clang_path), CLANG_RESOURCE_DIR)) / "include";
-+      fs::path(Driver::GetResourcesPath(std::string(clang_bin_path), CLANG_RESOURCE_DIR)) / "include";
-    free(clang_path);
+    auto tmp_res_path =
+ #if LLVM_VERSION_MAJOR >= 20
+-      Driver::GetResourcesPath(std::string(clang_path));
++      Driver::GetResourcesPath(std::string(clang_bin_path));
+ #else
+-      Driver::GetResourcesPath(std::string(clang_path), CLANG_RESOURCE_DIR);
++      Driver::GetResourcesPath(std::string(clang_bin_path), CLANG_RESOURCE_DIR);
+ #endif
+    auto clang_res_path = fs::path(tmp_res_path) / "include";
  
-    c->getHeaderSearchOpts().UseBuiltinIncludes = true;
 -- 
-2.44.0
+2.46.0
 
