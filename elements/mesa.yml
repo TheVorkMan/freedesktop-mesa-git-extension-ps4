@@ -71,7 +71,6 @@ variables:
     -Degl=enabled
     -Dgallium-drivers=%{gallium_drivers}
     -Dgallium-nine=true
-    -Dgallium-omx=disabled
     -Dgallium-rusticl=true
     -Dgallium-va=enabled
     -Dgallium-vdpau=enabled
