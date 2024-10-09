@@ -6,7 +6,7 @@ import re
 import gitlab
 
 url = "https://gitlab.com"
-proj_id = os.environ.get("CI_PROJECT_ID", "4339844")
+proj_id = os.environ.get("CI_PROJECT_ID", "19127941")
 token = os.environ.get("FREEDESKTOP_API_KEY")
 
 branch_regex = r"^update/(components|include|abi|bootstrap)_.*[.](bst|yml)-diff_md5-.*-for-(master|release/\d{2}[.]08)$"
