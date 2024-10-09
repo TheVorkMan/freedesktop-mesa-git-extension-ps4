@@ -9,7 +9,7 @@ url = "https://gitlab.com"
 proj_id = os.environ.get("CI_PROJECT_ID", "19127941")
 token = os.environ.get("FREEDESKTOP_API_KEY")
 
-branch_regex = r"^update/[^-]+-diff_md5-.*-for-(master|release/\d{2}[.]08)$"
+branch_regex = r"^update/.+-diff_md5-.*-for-(master|release/\d{2}[.]08)$"
 
 gl = gitlab.Gitlab(url, private_token=token)
 project = gl.projects.get(proj_id, lazy=True)
