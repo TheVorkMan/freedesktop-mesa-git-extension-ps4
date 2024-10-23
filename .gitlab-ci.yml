@@ -58,7 +58,12 @@ before_script:
   - master@freedesktop-sdk/mesa-git-extension
   - /^release\/.*/@freedesktop-sdk/mesa-git-extension
   script:
-  -  make build ARCH=${ARCH}
+  - |
+    make build ARCH=${ARCH}
+  - |
+    if [[ "${ARCH}" = "x86_64" ]]; then
+    make build ARCH=i686
+    fi
   artifacts:
     when: always
     paths:
@@ -69,14 +74,6 @@ before_script:
   - x86_64
   variables:
     ARCH: x86_64
-    BUILD_TASKS: 2
-    BUILD_CPU_MULTIPLIER: 2
-
-.builder-i686:
-  tags:
-  - x86_64
-  variables:
-    ARCH: i686
     BUILD_TASKS: 2
     BUILD_CPU_MULTIPLIER: 2
 
@@ -96,11 +93,6 @@ build_x86_64:
   extends:
   - .merge_request_build
   - .builder-x86_64
-
-build_i686:
-  extends:
-  - .merge_request_build
-  - .builder-i686
 
 build_aarch64:
   extends:
