@@ -53,7 +53,7 @@ variables:
       libunwind: enabled
   - target_arch == "aarch64":
       gallium_drivers: asahi,etnaviv,freedreno,lima,nouveau,panfrost,swrast,tegra,virgl,v3d,vc4,zink,r600,r300,radeonsi
-      vulkan_drivers: freedreno,broadcom,panfrost,swrast,amd,nouveau
+      vulkan_drivers: freedreno,broadcom,panfrost,swrast,amd,nouveau,asahi
       libunwind: disabled
   - target_arch in ("ppc64le", "ppc64", "riscv64"):
       gallium_drivers: nouveau,r600,r300,radeonsi,swrast,virgl
