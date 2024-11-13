@@ -2,6 +2,7 @@ build-depends:
 - freedesktop-sdk.bst:components/appstream-minimal.bst
 - freedesktop-sdk.bst:components/git-minimal.bst
 - freedesktop-sdk.bst:components/m4.bst
+- freedesktop-sdk.bst:bootstrap/sed.bst
 
 (@):
 - freedesktop-sdk.bst:elements/extensions/mesa/config.yml
@@ -11,6 +12,7 @@ variables:
   app-id: >-
     org.freedesktop.Platform.GL.mesa-git
     org.freedesktop.Platform.GL32.mesa-git
+  strip-binaries: ''
 
 config:
   install-commands:
