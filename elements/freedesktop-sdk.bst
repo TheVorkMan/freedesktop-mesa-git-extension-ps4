@@ -4,7 +4,7 @@ sources:
 - kind: git_repo
   url: gitlab:freedesktop-sdk/freedesktop-sdk.git
   track: master
-  ref: 5294ace7892d8e0f4b941f5b44b323dbfcb64b77
+  ref: 24.08-branchpoint-563-g00492f24c7639bd73d462e22e9c57e2e82e877b1
 - kind: patch
   path: patches/freedesktop-sdk/patch-config-to-point-to-mesa-git.patch
 
