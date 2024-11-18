@@ -26,6 +26,10 @@ default:
     max: 2
     when: runner_system_failure
 
+  id_tokens:
+    CACHE_TOKEN:
+      aud: cache.freedesktop-sdk.io
+
 stages:
 - build
 - publish
@@ -47,6 +51,7 @@ before_script:
     # Force higher parallelity
     export MAX_JOBS=$(python -c "print(round(($(nproc) * ${BUILD_CPU_MULTIPLIER}) / ${BUILD_TASKS}))")
     [ -d ~/.config ] || mkdir -p ~/.config
+    echo $CACHE_TOKEN > ~/.config/freedesktop-sdk.token
     [ -S /run/casd/casd.sock ] && export LOCAL_CAS=true
     python3 -mmako.cmd templates/buildstream.conf --output-file ~/.config/buildstream.conf
     cat ~/.config/buildstream.conf
