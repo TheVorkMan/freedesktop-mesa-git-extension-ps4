@@ -5,9 +5,6 @@ variables:
 
   XDG_CACHE_HOME: "${CI_PROJECT_DIR}/cache"
 
-  BUILD_TASKS: 4
-  BUILD_CPU_MULTIPLIER: 1
-
   # mesa-git-extension is only available through Flathub beta
   RELEASE_CHANNEL: beta
 
@@ -79,8 +76,6 @@ before_script:
   - x86_64
   variables:
     ARCH: x86_64
-    BUILD_TASKS: 2
-    BUILD_CPU_MULTIPLIER: 2
 
 .builder-aarch64:
   tags:
