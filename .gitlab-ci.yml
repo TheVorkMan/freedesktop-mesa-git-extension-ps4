@@ -45,8 +45,6 @@ before_script:
 
   # Private SSL keys/certs for pushing to the CAS server
   - |
-    # Force higher parallelity
-    export MAX_JOBS=$(python -c "print(round(($(nproc) * ${BUILD_CPU_MULTIPLIER}) / ${BUILD_TASKS}))")
     [ -d ~/.config ] || mkdir -p ~/.config
     echo $CACHE_TOKEN > ~/.config/freedesktop-sdk.token
     [ -S /run/casd/casd.sock ] && export LOCAL_CAS=true
