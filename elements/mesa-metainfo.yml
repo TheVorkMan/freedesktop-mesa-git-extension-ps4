@@ -31,6 +31,7 @@ config:
       -D__VARIANT_TEXT__='%{variant_text}' \
       -D__APP_ID__=${app_id} \
       appdata.template > ${appdata_dir}/${app_id}.metainfo.xml
+        appstreamcli validate --no-net "%{install-root}%{datadir}/metainfo"/${app_id}.metainfo.xml
         appstreamcli compose --components ${app_id} \
         --prefix=%{prefix} --result-root %{install-root} \
         --data-dir %{install-root}%{flatpak_xmldir} --origin=flatpak %{install-root}
