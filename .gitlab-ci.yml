@@ -56,9 +56,8 @@ before_script:
 
 .merge_request_build:
   stage: build
-  except:
-  - master@freedesktop-sdk/mesa-git-extension
-  - /^release\/.*/@freedesktop-sdk/mesa-git-extension
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
   script:
   - |
     make build ARCH=${ARCH}
@@ -140,16 +139,16 @@ publish_flatpak:
     export REPO_TOKEN="${FLATHUB_REPO_TOKEN_BETA}"
     test -r publish_build.txt
     flat-manager-client purge "$(cat publish_build.txt)"
-  only:
-  - master@freedesktop-sdk/mesa-git-extension
-  - /release\/.*/@freedesktop-sdk/mesa-git-extension
-  except:
-  - schedules
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    when: never
+  - if: '$CI_COMMIT_BRANCH == "master"'
+  - if: '$CI_COMMIT_BRANCH =~ /^release\/.*/'
 
 track_updates:
   stage: update
-  only:
-  - schedules
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "schedule"'
   script:
   - git remote set-url origin "https://gitlab-ci-token:${FREEDESKTOP_API_KEY}@gitlab.com/freedesktop-sdk/mesa-git-extension.git"
   - git config user.name "freedesktop_sdk_updater"
