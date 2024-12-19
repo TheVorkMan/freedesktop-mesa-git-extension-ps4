@@ -146,7 +146,7 @@ publish_flatpak:
   after_script:
   - |
     export REPO_TOKEN="${FLATHUB_REPO_TOKEN_BETA}"
-    test -r publish_build.txt
+    test -s publish_build.txt
     flat-manager-client purge "$(cat publish_build.txt)"
   rules:
   - if: '$CI_PIPELINE_SOURCE == "schedule"'
