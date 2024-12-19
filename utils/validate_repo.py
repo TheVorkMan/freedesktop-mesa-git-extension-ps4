@@ -90,7 +90,7 @@ def main():
     args = parser.parse_args()
 
     validate_environment()
-    validate_refs(args.repo_path)
+    validate_refs(args.path)
 
 
 if __name__ == "__main__":
