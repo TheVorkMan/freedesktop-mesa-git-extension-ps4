@@ -88,6 +88,15 @@ before_script:
   variables:
     ARCH: ppc64le
 
+lint:
+  stage: build
+  script:
+    - ruff format --check utils/*.py
+    - ruff check --output-format=gitlab utils/*.py
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+  needs: []
+
 build_x86_64:
   extends:
   - .merge_request_build
@@ -124,7 +133,7 @@ publish_flatpak:
           ;;
       esac
     done
-
+  - python utils/validate_repo.py --path repo
   - flatpak build-update-repo --generate-static-deltas repo
   - flat-manager-client create https://hub.flathub.org/ "${RELEASE_CHANNEL}" --build-log-url ${CI_PIPELINE_URL} > publish_build.txt
   - flat-manager-client push $(cat publish_build.txt) repo --build-log-url ${CI_PIPELINE_URL}
