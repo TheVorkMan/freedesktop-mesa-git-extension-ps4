@@ -133,7 +133,7 @@ publish_flatpak:
           ;;
       esac
     done
-
+  - python utils/validate_repo.py --path repo
   - flatpak build-update-repo --generate-static-deltas repo
   - flat-manager-client create https://hub.flathub.org/ "${RELEASE_CHANNEL}" --build-log-url ${CI_PIPELINE_URL} > publish_build.txt
   - flat-manager-client push $(cat publish_build.txt) repo --build-log-url ${CI_PIPELINE_URL}
