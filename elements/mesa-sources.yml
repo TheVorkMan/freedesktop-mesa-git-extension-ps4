@@ -2,7 +2,7 @@ sources:
 - kind: git_repo
   url: freedesktop:mesa/mesa.git
   track: main
-  ref: 24.3-branchpoint-2000-g28a214728ce3e09c17f8b43324981eae8b26697b
+  ref: 24.3-branchpoint-2009-ge38150f2fa150f80c8f106baf4ef61a7fe0cb1a0
 # Rust dependencies:
 - kind: tar
   directory: subprojects/packagecache/syn-2.0.68
