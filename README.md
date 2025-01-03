@@ -1,6 +1,6 @@
 # mesa-git-extension
 
-## Building and installing locally
+## Development
 ### Installing dependencies
 If you want to test your changes locally, then you will need to first install [BuildStream](https://buildstream.build). The installation instructions can be found [here](https://buildstream.build/install.html). Note that we use the latest version of BuildStream, so ensure you use this version too (otherwise you may not hit our cache server, and have to build everything from scratch). At the time of writing, we use a pre-release snapshot of BuildStream 2.
 
@@ -34,14 +34,20 @@ flatpak install ./repo org.freedesktop.Platform.GL.mesa-git
 flatpak install ./repo org.freedesktop.Platform.GL32.mesa-git
 ```
 
-### Usage
+### Publishing
+This extension is published only ever published Flathub beta
+Token expected prefixes are `['org.freedesktop.Platform.GL', 'org.freedesktop.Platform.GL32']` and repos `['beta']`.
+
+If token has expired, submit a ticket into https://github.com/flathub/flathub/ to renew.
+
+## Usage
 To use the mesa-git extension, you must set the environment variable `FLATPAK_GL_DRIVERS=mesa-git` before running a Flatpak app. See more details in the [Wiki page](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/wikis/mesa-git).
 
 ```shell
 FLATPAK_GL_DRIVERS=mesa-git flatpak run APP_ID
 ```
 
-### Hacking
+## Hacking
 If you need to build this extension from some other commit or repo, feel free to locally edit elements/mesa.bst sources section
 which looks something like
 ```
