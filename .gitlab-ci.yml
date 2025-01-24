@@ -45,6 +45,13 @@ before_script:
   - |
     export REPO_TOKEN="${FLATHUB_REPO_TOKEN_BETA}"
 
+  - |
+    if cp --reflink=always README.md .reflink-test; then
+    echo Reflinks supported, disabling buildbox-fuse
+    chmod -x /usr/bin/buildbox-fuse
+    rm .reflink-test
+    fi
+
   # Private SSL keys/certs for pushing to the CAS server
   - |
     [ -d ~/.config ] || mkdir -p ~/.config
