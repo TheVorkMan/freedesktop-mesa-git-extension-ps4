@@ -17,7 +17,7 @@ export-repo: build
 	mkdir -p $(CHECKOUT_ROOT)
 	$(BST) artifact checkout flatpak-repo.bst --directory $(CHECKOUT_ROOT)/flatpak-repo.bst
 	test -e $(REPO) || ostree init --repo=$(REPO) --mode=archive
-	flatpak build-commit-from --src-repo=$(CHECKOUT_ROOT)/flatpak-repo.bst --subject $(GIT_DESCRIBE) $(REPO)
+	flatpak build-commit-from --src-repo=$(CHECKOUT_ROOT)/flatpak-repo.bst --subject $(GIT_DESCRIBE) --disable-fsync $(REPO)
 	rm -rf $(CHECKOUT_ROOT)/flatpak-repo.bst
 
 .PHONY: build clean-repo export
