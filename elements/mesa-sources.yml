@@ -2,7 +2,7 @@ sources:
 - kind: git_repo
   url: freedesktop:mesa/mesa.git
   track: main
-  ref: 25.1-branchpoint-1108-gef63e3e4d211e491164fea8ec494fdf7ca71d9c8
+  ref: 25.1-branchpoint-1384-g97f71420dfdf86de084b64cbcbd65855063fcc94
 # Rust dependencies:
 - kind: tar
   directory: subprojects/packagecache/syn-2.0.68
@@ -64,4 +64,8 @@ sources:
   directory: subprojects/packagecache/ucd-trie-0.1.6
   url: tar_https:crates.io/api/v1/crates/ucd-trie/0.1.6/download
   ref: ed646292ffc8188ef8ea4d1e0e0150fb15a5c2e12ad9b8fc191ae7a8a7f3c4b9
+- kind: tar
+  directory: subprojects/packagecache/rustc-hash-2.1.1
+  url: tar_https:crates.io/api/v1/crates/rustc-hash/2.1.1/download
+  ref: 357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d
   # Patches need to be last so non-applying patches won't block updates
