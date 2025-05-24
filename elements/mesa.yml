@@ -75,6 +75,7 @@ variables:
     -Dgallium-rusticl=true
     -Dgallium-va=enabled
     -Dgallium-vdpau=enabled
+    -Dgallium-mediafoundation=disabled
     -Dgbm=enabled
     -Dgbm-backends-path="/usr/lib/%{gcc_triplet}/GL/lib/gbm"
     -Dgles1=disabled
