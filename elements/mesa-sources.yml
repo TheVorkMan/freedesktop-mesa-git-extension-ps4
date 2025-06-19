@@ -5,9 +5,9 @@ sources:
   ref: 25.1-branchpoint-2843-g5ff6d9cbd8b17ff23d576db8659a478d988c4266
 # Rust dependencies:
 - kind: tar
-  directory: subprojects/packagecache/syn-2.0.68
-  url: tar_https:crates.io/api/v1/crates/syn/2.0.68/download
-  ref: 901fa70d88b9d6c98022e23b4136f9f3e54e4662c3bc1bd1d84a42a9a0f0c1e9
+  directory: subprojects/packagecache/syn-2.0.87
+  url: tar_https:crates.io/api/v1/crates/syn/2.0.87/download
+  ref: 25aa4ce346d03a6dcd68dd8b4010bcb74e54e62c90c573f394c46eae99aba32d
 - kind: tar
   directory: subprojects/packagecache/unicode-ident-1.0.12
   url: tar_https:crates.io/api/v1/crates/unicode-ident/1.0.12/download
@@ -17,9 +17,9 @@ sources:
   url: tar_https:crates.io/api/v1/crates/proc-macro2/1.0.86/download
   ref: 5e719e8df665df0d1c8fbfd238015744736151d4445ec0836b8e628aae103b77
 - kind: tar
-  directory: subprojects/packagecache/quote-1.0.33
-  url: tar_https:crates.io/api/v1/crates/quote/1.0.33/download
-  ref: 5267fca4496028628a95160fc423a33e8b2e6af8a5302579e322e4b520293cae
+  directory: subprojects/packagecache/quote-1.0.35
+  url: tar_https:crates.io/api/v1/crates/quote/1.0.35/download
+  ref: 291ec9ab5efd934aaf503a6466c5d5251535d108ee747472c3977cc5acc868ef
 - kind: tar
   directory: subprojects/packagecache/paste-1.0.14
   url: tar_https:crates.io/api/v1/crates/paste/1.0.14/download
