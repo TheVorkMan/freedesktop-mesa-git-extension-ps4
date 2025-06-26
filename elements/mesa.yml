@@ -91,7 +91,6 @@ variables:
     -Dlmsensors=disabled
     -Dmicrosoft-clc=disabled
     -Dandroid-libbacktrace=disabled
-    -Dosmesa=false
     -Dplatforms=x11,wayland
     -Dselinux=false
     -Dshared-glapi=enabled
