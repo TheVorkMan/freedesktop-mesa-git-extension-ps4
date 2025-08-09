@@ -21,6 +21,7 @@ build-depends:
 
 depends:
 - freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
+- freedesktop-sdk.bst:components/libdisplay-info.bst
 - freedesktop-sdk.bst:components/libdrm.bst
 - freedesktop-sdk.bst:components/libva.bst
 - freedesktop-sdk.bst:components/opencl.bst
