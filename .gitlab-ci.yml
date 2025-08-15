@@ -171,7 +171,7 @@ track_updates:
   - git config user.email "freedesktop_sdk_updater@libreml.com"
   - git branch -f "${CI_COMMIT_REF_NAME}" "origin/${CI_COMMIT_REF_NAME}"
   - git fetch --prune
-  - if [[ "$CI_COMMIT_BRANCH" == "master" ]]; then python utils/cleanup_leftover_branches.py; fi
+  - cleanup_leftover_branches.py
   - |
     case "${CI_COMMIT_REF_NAME}" in
       master)
