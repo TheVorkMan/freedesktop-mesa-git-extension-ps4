@@ -120,22 +120,6 @@ config:
       rm -f "%{install-root}%{libdir}/libglapi.so"
 
     - |
-      for dir in vdpau dri; do
-        for file in "%{install-root}%{libdir}/${dir}/"*.so*; do
-          soname="$(objdump -p "${file}" | sed "/ *SONAME */{;s///;q;};d")"
-          if [ -L "${file}" ]; then
-            continue
-          fi
-          if ! [ -f "%{install-root}%{libdir}/${dir}/${soname}" ]; then
-            mv "${file}" "%{install-root}%{libdir}/${dir}/${soname}"
-          else
-            rm "${file}"
-          fi
-          ln -s "${soname}" "${file}"
-        done
-      done
-
-    - |
       if [ -f "%{install-root}%{includedir}/vulkan/vulkan_intel.h" ]; then
         mkdir -p "%{install-root}%{includedir}/%{gcc_triplet}/vulkan"
         mv "%{install-root}%{includedir}/vulkan/vulkan_intel.h" "%{install-root}%{includedir}/%{gcc_triplet}/vulkan/"
