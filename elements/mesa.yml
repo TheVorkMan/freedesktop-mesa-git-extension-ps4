@@ -134,6 +134,11 @@ config:
       ln -sr '%{install-root}%{libdir}/OpenCL' '%{install-root}%{prefix}/OpenCL'
       ln -sr '%{install-root}%{libdir}/vdpau' '%{install-root}%{prefix}/vdpau'
 
+    # Temporarily place libdisplay-info into mesa libdir
+    # until base runtime adds it
+    - |
+      cp -av "/usr/lib/%{gcc_triplet}/"libdisplay-info*.so* "%{install-root}%{libdir}"
+
 public:
   bst:
     split-rules:
