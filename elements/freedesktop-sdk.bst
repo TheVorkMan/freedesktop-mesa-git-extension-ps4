@@ -3,8 +3,8 @@ kind: junction
 sources:
 - kind: git_repo
   url: gitlab:freedesktop-sdk/freedesktop-sdk.git
-  track: master
-  ref: freedesktop-sdk-25.08rc.1-0-g39d71950a40d750d430eb959ba320589a800bca8
+  track: freedesktop-sdk-25.08*
+  ref: freedesktop-sdk-25.08.0-0-g04d50e865e92fcc115136b0bc882c17a3d36a1dd
 - kind: patch
   path: patches/freedesktop-sdk/patch-config-to-point-to-mesa-git.patch
 
