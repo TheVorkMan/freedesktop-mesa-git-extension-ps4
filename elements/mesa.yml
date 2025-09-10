@@ -139,6 +139,11 @@ config:
     - |
       cp -av "/usr/lib/%{gcc_triplet}/"libdisplay-info*.so* "%{install-root}%{libdir}"
 
+    - |
+      DIR="%{install-root}%{project_licensedir}/mesa-git"
+      mkdir -p "$DIR"
+      cp -rv licenses/* "$DIR"
+
 public:
   bst:
     split-rules:
