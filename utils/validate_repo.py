@@ -12,8 +12,8 @@ def list_refs(path):
     return set(refs)
 
 
-def get_branch():
-    return os.environ["CI_COMMIT_BRANCH"]
+def is_default_branch():
+    return os.environ["CI_COMMIT_BRANCH"] == os.environ["CI_DEFAULT_BRANCH"]
 
 
 def validate_environment():
@@ -31,7 +31,7 @@ def validate_refs(path):
     ref_id_pattern = r"^org\.freedesktop\.Platform\.(GL(32)?(?:\.Debug)?\.mesa-git)$"
 
     ref_branch_pattern = r"^\d{2}\.08$"
-    if get_branch() == "master":
+    if is_default_branch():
         ref_branch_pattern = r"^\d{2}\.08beta$"
 
     expected_refs = {
