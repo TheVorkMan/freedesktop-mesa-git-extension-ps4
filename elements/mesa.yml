@@ -104,6 +104,7 @@ variables:
     -Drust_std=2021
     -Dintel-rt=%{intel-rt}
     -Dteflon=true
+    -Damdgpu-virtio=true
 
 config:
   install-commands:
