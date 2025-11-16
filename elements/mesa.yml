@@ -21,7 +21,6 @@ build-depends:
 
 depends:
 - freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
-- freedesktop-sdk.bst:components/libdisplay-info.bst
 - freedesktop-sdk.bst:components/libdrm.bst
 - freedesktop-sdk.bst:components/libva.bst
 - freedesktop-sdk.bst:components/opencl.bst
@@ -105,6 +104,7 @@ variables:
     -Dintel-rt=%{intel-rt}
     -Dteflon=true
     -Damdgpu-virtio=true
+    -Ddisplay-info=disabled
 
 config:
   install-commands:
@@ -133,11 +133,6 @@ config:
       ln -sr '%{install-root}%{datadir}/vulkan/implicit_layer.d' '%{install-root}%{prefix}/vulkan/implicit_layer.d'
       ln -sr '%{install-root}%{libdir}/OpenCL' '%{install-root}%{prefix}/OpenCL'
       ln -sr '%{install-root}%{libdir}/vdpau' '%{install-root}%{prefix}/vdpau'
-
-    # Temporarily place libdisplay-info into mesa libdir
-    # until base runtime adds it
-    - |
-      cp -av "/usr/lib/%{gcc_triplet}/"libdisplay-info*.so* "%{install-root}%{libdir}"
 
     - |
       DIR="%{install-root}%{project_licensedir}/mesa-git"
