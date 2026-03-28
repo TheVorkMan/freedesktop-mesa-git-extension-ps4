@@ -24,6 +24,7 @@ depends:
 - freedesktop-sdk.bst:components/libdrm.bst
 - freedesktop-sdk.bst:components/libva.bst
 - freedesktop-sdk.bst:components/opencl.bst
+- freedesktop-sdk.bst:components/xorg-lib-x11.bst
 - freedesktop-sdk.bst:components/xorg-lib-xfixes.bst
 - freedesktop-sdk.bst:components/xorg-lib-xrandr.bst
 - freedesktop-sdk.bst:components/xorg-lib-xshmfence.bst
@@ -31,6 +32,7 @@ depends:
 - freedesktop-sdk.bst:components/vulkan-icd-loader.bst
 - freedesktop-sdk.bst:components/wayland.bst
 - freedesktop-sdk.bst:components/libglvnd.bst
+- freedesktop-sdk.bst:components/libpng.bst
 - freedesktop-sdk.bst:components/libvdpau.bst
 - freedesktop-sdk.bst:components/libunwind.bst
 - freedesktop-sdk.bst:components/zstd.bst
