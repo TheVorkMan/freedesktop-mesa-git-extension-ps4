@@ -1,0 +1,23 @@
+name: Build PS4 Mesa stack
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      REPO_DIR: repo
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+            fetch-depth: 0
+            persist-credentials: true
+  
+      - name: Building
+        run: make export-repo ARCH=x86_64 REPO=repo
