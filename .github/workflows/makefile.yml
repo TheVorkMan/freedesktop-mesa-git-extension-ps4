@@ -18,6 +18,8 @@ jobs:
         with:
             fetch-depth: 0
             persist-credentials: true
+      - name: Deps
+        run: pip3 install --user 'BuildStream == 2.*'
   
       - name: Building
         run: make export-repo ARCH=x86_64 REPO=repo
