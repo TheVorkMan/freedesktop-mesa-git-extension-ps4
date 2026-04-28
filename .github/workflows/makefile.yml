@@ -34,4 +34,4 @@ jobs:
             dulwich
   
       - name: Building
-        run: make export-repo ARCH=x86_64 REPO=repo
+        run: make export-repo ARCH=x86_64 REPO=repo BST_OPTS="--no-sandbox"
