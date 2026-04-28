@@ -20,8 +20,18 @@ jobs:
             persist-credentials: true
       - name: Deps
         run: |
-          pip3 install --user 'BuildStream == 2.*'
           sudo apt install bubblewrap
+          pip install \
+            buildstream \
+            ruamel.yaml \
+            pluginbase \
+            pyparsing \
+            requests \
+            packaging \
+            setuptools \
+            wheel \
+            tomlkit \
+            dulwich
   
       - name: Building
         run: make export-repo ARCH=x86_64 REPO=repo
