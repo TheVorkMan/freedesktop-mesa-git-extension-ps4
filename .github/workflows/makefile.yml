@@ -43,7 +43,7 @@ jobs:
         run: |
           echo "==== BuildStream logs ===="
           tree ~/.cache/buildstream
-          find ~/.cache/buildstream -name "*.rej" -exec tail -n 75 {} \;
+          find ~/.cache/buildstream/cas/staging -name "*.rej" -exec tail -n 75 {} \;
 
       - name: Uploading
         uses: actions/upload-artifact@v4
