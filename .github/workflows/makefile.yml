@@ -20,7 +20,7 @@ jobs:
             persist-credentials: true
       - name: Deps
         run: |
-          sudo apt install bubblewrap fuse3 lzip patch
+          sudo apt install bubblewrap fuse3 lzip patch ostree flatpak
           pip install \
             buildstream \
             ruamel.yaml \
