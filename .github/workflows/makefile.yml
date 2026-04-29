@@ -42,7 +42,7 @@ jobs:
         if: failure()
         run: |
           echo "==== BuildStream logs ===="
-          tree ~/.cache/buildstream
+          tree ~/.cache/buildstream/cas/staging
           find ~/.cache/buildstream/cas/staging -name "*.rej" -exec tail -n 75 {} \;
 
       - name: Uploading
