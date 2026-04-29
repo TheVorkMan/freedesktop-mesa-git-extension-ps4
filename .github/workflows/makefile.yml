@@ -43,6 +43,7 @@ jobs:
         run: |
           echo "==== BuildStream logs ===="
           tree ~/.cache/buildstream/cas/staging
+          find ~/.cache/buildstream -name "*.log" -exec cat {} \;
           find ~/.cache/buildstream/cas/staging -name "*.rej" -exec tail -n 75 {} \;
 
       - name: Uploading
