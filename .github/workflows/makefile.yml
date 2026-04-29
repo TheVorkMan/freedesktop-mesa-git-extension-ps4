@@ -20,7 +20,7 @@ jobs:
             persist-credentials: true
       - name: Deps
         run: |
-          sudo apt install bubblewrap fuse3 lzip patch ostree flatpak
+          sudo apt install bubblewrap fuse3 lzip patch ostree flatpak tree
           pip install \
             buildstream \
             ruamel.yaml \
@@ -42,6 +42,7 @@ jobs:
         if: failure()
         run: |
           echo "==== BuildStream logs ===="
+          tree ~/.cache/buildstream
           find ~/.cache/buildstream -name "*.rej" -exec tail -n 75 {} \;
 
       - name: Uploading
