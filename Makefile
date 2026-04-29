@@ -3,8 +3,7 @@ ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/" | sed "s/^ppc/powerpc/")
 BOOTSTRAP_ARCH?=$(shell uname -m | sed "s/^i.86$$/i686/")
 REPO?=repo
 ARCH_OPTS=-o target_arch $(ARCH) -o bootstrap_arch ${BOOTSTRAP_ARCH}
-BST_OPTS?=
-BST=bst $(BST_OPTS) $(ARCH_OPTS)
+BST=bst $(ARCH_OPTS)
 CHECKOUT_ROOT=runtimes
 GIT_DESCRIBE := $(shell git rev-parse HEAD)
 

@@ -16,6 +16,6 @@ config:
   directory: "%{prefix}"
   metadata:
     Runtime:
-      name: org.freedesktop.Platform.GL.mesa-git
+      name: org.freedesktop.Platform.GL.mesa-git-ps4
       runtime: org.freedesktop.Platform/%{flatpak_arch}/%{branch}
       sdk: org.freedesktop.Sdk/%{flatpak_arch}/%{branch}

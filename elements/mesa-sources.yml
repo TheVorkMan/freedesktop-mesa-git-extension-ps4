@@ -3,6 +3,8 @@ sources:
   url: freedesktop:mesa/mesa.git
   track: main
   ref: 26.1-branchpoint-58-g78e2bbc70f55f1cf6ef922e2052b1ce6b879b952
+- kind: patch
+  path: patches/mesa/mesa-ps4.patch
 # Rust dependencies:
 - kind: tar
   directory: subprojects/packagecache/syn-2.0.87

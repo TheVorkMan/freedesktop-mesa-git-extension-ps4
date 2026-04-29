@@ -33,3 +33,5 @@ sources:
   url: freedesktop:mesa/drm.git
   track: libdrm-*
   ref: libdrm-2.4.131-0-g6bfcfc725fbe0ece0918535556d61ee567b1ffff
+- kind: patch
+  path: patches/libdrm/libdrm-ps4.patch
